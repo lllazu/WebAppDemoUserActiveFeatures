@@ -9,5 +9,5 @@ DELETE FROM `User`;
 INSERT INTO `User` ( id, name, activeFeatures, inactiveFeatures ) VALUES
 ( '1', 'user_x', 'f5', 'f6' ), 
 ( '2', 'user_y', 'f1,f2,f3','f6,f2,f4,f5' ), 
-( '3', 'user_z', 'f3', '' ),
+( '3', 'user_z', 'f3', 'f6' ),
 ( '4', 'user_k', '', '' );
