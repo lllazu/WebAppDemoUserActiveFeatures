@@ -3,7 +3,9 @@ package info.laz.webappdemo.service;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.Session;
@@ -32,10 +34,14 @@ public class VersionService
             User user = (User) session.createCriteria(User.class)
                 .add(Restrictions.eq("name", userName)).uniqueResult();
             if (user != null) {
-            	List<String> activeFeatures = new ArrayList<String>();
+            	Set<String> activeFeatures = new LinkedHashSet<String>();
                 activeFeatures.addAll(Arrays.asList(version.getActiveFeatures().split(",")));
                 activeFeatures.addAll(Arrays.asList(user.getActiveFeatures().split(",")));
-                return activeFeatures;
+                activeFeatures.removeAll(Arrays.asList(user.getInactiveFeatures().split(",")));
+                
+                List<String> sortedActiveFeatures = new ArrayList<String>(activeFeatures);
+                Collections.sort(sortedActiveFeatures);
+                return sortedActiveFeatures;
             }
         }
         
