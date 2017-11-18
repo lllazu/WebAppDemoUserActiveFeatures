@@ -22,7 +22,7 @@ public class VersionService
     @Transactional
     public List<String> getActiveFeatures(String user, String version) {
         Session session = sessionFactory.getCurrentSession();
-        List<User> list = session.createQuery("from User").list();
+        List<User> list = session.createCriteria(User.class).list();
     	
         return Arrays.asList("f1", "f2", "f3", "f5", "users=" + list.size());
     }
