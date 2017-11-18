@@ -37,8 +37,8 @@
 	</beans:bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
-	<beans:bean id="hibernate4AnnotatedSessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<beans:alias alias="sessionFactory" name="hibernate4AnnotatedSessionFactory"/>
+	<beans:bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
@@ -58,7 +58,7 @@
 	</beans:bean>
 	
 	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>

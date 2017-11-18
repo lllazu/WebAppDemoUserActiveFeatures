@@ -3,27 +3,27 @@ package info.laz.webappdemo.service;
 import java.util.Arrays;
 import java.util.List;
 
-//import javax.persistence.EntityManager;
-//import javax.persistence.PersistenceContext;
-//import javax.persistence.criteria.CriteriaQuery;
-//import javax.persistence.criteria.Root;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-//import info.laz.webappdemo.model.User;
+import info.laz.webappdemo.model.User;
 
 
 @Component
 public class VersionService
 {
-    //@PersistenceContext
-    //private EntityManager em;
-   
+    @Autowired
+    private SessionFactory sessionFactory;
+    
+    @Transactional
     public List<String> getActiveFeatures(String user, String version) {
-        //CriteriaQuery<User> criteriaQuery = em.getCriteriaBuilder().createQuery(User.class);
-        //Root<User> root = criteriaQuery.from(User.class);
-        //List<User> list = em.createQuery(criteriaQuery).getResultList();
-      
-    	return Arrays.asList("f1", "f2", "f3", "f5"); //, "users=" + list.size());
+        Session session = sessionFactory.getCurrentSession();
+        List<User> list = session.createQuery("from User").list();
+    	
+        return Arrays.asList("f1", "f2", "f3", "f5", "users=" + list.size());
     }
 }
