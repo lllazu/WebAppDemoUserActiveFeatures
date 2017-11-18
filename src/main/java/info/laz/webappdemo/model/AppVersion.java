@@ -4,7 +4,7 @@ package info.laz.webappdemo.model;
 import javax.persistence.*;
 
 @Entity
-public class GlobalFeatures {
+public class AppVersion {
 	@Id
     private Integer id;
 	
@@ -14,7 +14,7 @@ public class GlobalFeatures {
 	@Column
 	private String activeFeatures;
 	
-	public GlobalFeatures() {}
+	public AppVersion() {}
 
 	public Integer getId() {
 		return id;

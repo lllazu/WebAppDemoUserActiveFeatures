@@ -42,8 +42,8 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
+				<beans:value>info.laz.webappdemo.model.AppVersion</beans:value>
 				<beans:value>info.laz.webappdemo.model.User</beans:value>
-				<beans:value>info.laz.webappdemo.model.GlobalFeatures</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

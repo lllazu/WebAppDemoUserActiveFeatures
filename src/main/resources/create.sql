@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `GlobalFeatures`;
-CREATE TABLE `GlobalFeatures` (
+DROP TABLE IF EXISTS `AppVersion`;
+CREATE TABLE `AppVersion` (
     `id` int(11) NOT NULL,
     `appVersion` varchar(255) NOT NULL,
     `activeFeatures` varchar(1023),
