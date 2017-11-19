@@ -18,7 +18,6 @@ import org.hibernate.criterion.SimpleExpression;
 
 import info.laz.webappdemo.model.AppVersion;
 import info.laz.webappdemo.model.User;
-import info.laz.webappdemo.service.impl.VersionServiceImpl;
 
 
 public class VersionServiceImplTest

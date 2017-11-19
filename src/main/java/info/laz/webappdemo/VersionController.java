@@ -18,19 +18,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Controller
 public class VersionController
 {
-	@Autowired
-	private VersionService versionService;
+    @Autowired
+    private VersionService versionService;
 	
     @RequestMapping(value = "/rest/version/features", method = RequestMethod.GET)
-    public @ResponseBody FeaturesResponse getFeatures(
-    	@RequestParam("user") String user, 
-        @RequestParam("version") String version)
-    {
-    	FeaturesResponse res = new FeaturesResponse();
-    	res.setUser(user);
-    	res.setVersion(version);
-    	res.setActive_features(versionService.getActiveFeatures(user, version));
-    	
+    public @ResponseBody FeaturesResponse getActiveFeatures(
+        @RequestParam("user") String user, 
+        @RequestParam("version") String version) {
+ 
+        FeaturesResponse res = new FeaturesResponse();
+        res.setUser(user);
+        res.setVersion(version);
+        res.setActive_features(versionService.getActiveFeatures(user, version));
         return res;
+    }
+    
+    public void setVersionService(VersionService versionService) {
+        this.versionService = versionService;
     }
 }
