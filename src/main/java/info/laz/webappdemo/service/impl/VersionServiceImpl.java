@@ -49,4 +49,8 @@ public class VersionServiceImpl implements VersionService
         
         return Collections.emptyList();
     }
+    
+    public void setSessionFactory(SessionFactory sessionFactory) {
+    	this.sessionFactory = sessionFactory;
+    }
 }
