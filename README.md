@@ -1,4 +1,4 @@
-Demo: Spring MVC + Hibernate + H2
+Demo: Spring MVC + Web Services + Hibernate + H2
 ===========================================
 
 Running the Example
